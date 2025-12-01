@@ -1,0 +1,329 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 0) Global page frame */
+html, body {
+    height: 100%;
+    /* allow % heights below and help sticky footer patterns, only needed if you plan to use percentage heights on children (e.g., .hero {
+                height: 50%; */
+}       
+
+body {
+    min-height: 100vh;
+    /* body at least full viewport height */
+    display: flex;
+    /* vertical stack: header, main, footer */
+    flex-direction: column;
+    /* stack children top → bottom */
+    margin: 0;
+    /* remove default 8px body margin */
+    font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    /* base font stack */
+}
+
+main {
+    flex: 1;  
+    /* grow to fill leftover space; don’t shrink; base size = auto , same as flex: 1 0 auto*/
+}
+
+/* 1) The “imaginary box” */
+.container {
+    max-width: 1000px;
+    /* limit line length + create a centered column */
+    margin: 0 auto;
+    /* center horizontally */
+    padding: 0 24px;
+    /* side gutters so content doesn’t touch edges */
+    /* outline: 4px red solid; */
+    /* DEBUG ONLY: visual edge of the container; remove when done */
+}
+
+/* 2) Consistent vertical rhythm per section */
+.section {
+    padding: 48px 0;
+    /* top/bottom breathing room for each section */
+    
+}
+
+/* 3) Header */
+header {
+    background: #1F2937;
+    /* full-width dark bar behind the container */
+}
+
+/* full-width bar */
+.container.header {
+    display: flex;
+    /* put logo + nav on one row */
+    align-items: center;
+    /* vertically center them */
+    gap: 16px;
+    /* space between logo group and nav (if auto-margin weren’t used) */
+}
+
+.container.header nav {
+    margin-left: auto;
+    /* push nav all the way to the right */
+    
+}
+
+/* push nav to the right */
+.nav {
+    display: flex;
+    /* nav links in a row */
+    gap: 16px;
+    /* space between links */
+    list-style: none;
+    /* remove bullets */
+    margin: 0;
+    /* remove default ul margin */
+    padding: 0;
+    /* remove default ul left padding */
+}
+
+.container.header a:link,
+.container.header a:visited {
+    color: #E5E7EB;
+    /* light link color for dark header */
+    text-decoration: none;
+    /* no underline by default in header */
+}
+
+.container.header a:hover {
+    text-decoration: underline;
+    /* visible hover cue */
+}
+
+.logo-link img {
+    height: 40px;
+    /* control display height of the logo */
+    width: auto;
+    /* keep aspect ratio */
+    display: block;
+    /* remove small baseline gap under inline images */
+}
+
+/* 4) Hero */
+.hero {
+    background: #1F2937;
+    /* dark hero background */
+    color: #F9FAF8;
+    /* default text color inside hero */
+
+}
+
+.hero-row {
+    display: flex;
+    /* two columns: copy (left) and image (right) */
+    align-items: center;
+    /* align vertically */
+    gap: 24px;
+    /* space between columns */
+}
+
+.hero-copy h1 {
+    margin: 0;
+    /* reset default margins to control spacing precisely */
+    font-size: 48px;
+    /* big headline per mock */
+    font-weight: 900;
+    /* heavy weight */
+}
+
+.hero-copy p {
+    margin: 0;
+    /* avoid extra gap; rely on container gap/margins */
+    color: #E5E7EB;
+    /* lower-contrast paragraph */
+    font-size: 18px;
+    /* readable subtext size */
+}
+
+.hero-img img {
+    max-width: 100%;
+    /* image scales down within its column */
+    height: auto;
+    /* preserve aspect ratio */
+    display: block;
+    /* remove inline gap */
+    border-radius: 12px;
+    /* rounded image corners */
+}
+
+/* Button look for links */
+.btn {
+    display: inline-block;
+    /* allow padding/height on an <a> */
+    padding: 10px 18px;
+    /* hit area */
+    border-radius: 12px;
+    /* pill-ish corners */
+    background: #3882f6;
+    /* brand blue */
+    color: #fff;
+    /* white text */
+    text-decoration: none;
+    /* no underline */
+    font-weight: 600;
+    /* semi-bold label */
+    cursor: pointer;
+    /* pointer cursor for button-y feel  when hovering over*/
+}
+
+.hero .btn {
+    margin-top: 12px;
+    /* small space under the paragraph */
+}
+
+/* 5) Info cards (grid inside the same container) */
+.cards {
+    display: grid;
+    /* grid is perfect for uniform cards */
+    gap: 24px;
+    /* space between cards */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* responsive columns: 200px min, fill row */
+}
+
+.card {
+    display: flex;
+    /* stack image over text */
+    flex-direction: column;
+    align-items: center;
+    /* center image + text horizontally */
+    gap: 8px;
+    /* space between image and caption */
+    text-align: center;
+    /* center the text below image */
+}
+
+.thumb {
+    width: 100%;
+    /* image fills its card column width */
+    aspect-ratio: 1/1;
+    /* force a square box (nice uniform grid) */
+    object-fit: cover;
+    /* crop to fill square without distortion */
+    border-radius: 12px;
+    /* rounded corners */
+    border: 3px solid #3882f6;
+    /* blue outline per mock */
+    display: block;
+    /* remove inline gap */
+}
+
+.card p {
+    margin: 0;
+    /* keep spacing tight; grid/card gaps handle rhythm */
+}
+
+/* 6) Quote */
+.quote {
+    background: #E5E7EB;
+    /* light gray band behind the quote */
+}
+
+.quote .container {
+    text-align: center;
+    /* center the block as a unit (cite sits nicely under) */
+}
+
+.quote blockquote {
+    margin: 0 auto;
+    /* center the quote box in the container */
+    max-width: 700px;
+    /* keep line length comfortably readable */
+    font-style: italic;
+    /* quote styling */
+    text-align: left;
+    /* but keep the text left-aligned */
+}
+
+.quote cite {
+    display: block;
+    /* put the credit on its own line */
+    text-align: right;
+    /* align author to the right */
+    margin-top: 8px;
+    /* small space above author line */
+}
+
+/* 7) Call to Action */
+.cta-row {
+    display: flex;
+    /* text on left, button on right */
+    align-items: center;
+    /* vertical centering */
+    justify-content: space-between;
+    /* push apart to edges inside the container */
+    background: #3882f6;
+    /* blue panel */
+    color: #fff;
+    /* white text */
+    padding: 24px;
+    /* inner spacing */
+    border-radius: 12px;
+    /* rounded panel corners */
+}
+
+.cta-row .btn {
+    border: 2px solid #fff;
+    /* outlined CTA button like the mock */
+}
+
+/* 8) Footer */
+footer {
+    background: #1F2937;
+    /* dark footer band */
+    color: #F9FAF8;
+    /* light text */
+}
+
+.footer {
+    text-align: center;
+    /* center the copyright text */
+    padding: 32px 0;
+    /* vertical space */
+}
+
+/* 9) Responsive tweak */
+@media (max-width: 900px) {
+    /* when viewport ≤ 900px (tablet/phone) */
+
+    .hero-row,
+    .cta-row {
+        flex-direction: column;
+        /* stack columns vertically */
+        gap: 16px;
+        /* smaller space between stacked items */
+        text-align: center;
+        /* center text for small screens */
+    }
+}
+
+.info h2 {
+    text-align: center;
+    /* center the section heading over the grid */
+    margin: 0 0 24px;
+    /* space under the heading */
+    
+}
+
+.container.header a:focus-visible,
+.btn:focus-visible {
+    outline: 2px solid #fff;
+    /* high-contrast focus ring */
+    outline-offset: 2px;
+    /* pull ring slightly away from the element */
+}
+
+/* Accessible focus ring for keyboard users
+   - :focus-visible shows only when the element gets *keyboard* focus (e.g. Tab),
+     not on mouse click — so you avoid “ugly” outlines on click while keeping accessiblity.
+   - outline draws a ring without changing layout (unlike border).
+   - outline-offset separates the ring from the element edge so it’s easier to see.
+   - Use a high-contrast color: white works on your dark header; switch to #1e3a8a on light backgrounds.
+   - Scoped to header links and .btn so other links can keep their own styles.
